@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connection Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .error-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        .error-icon {
+            font-size: 48px;
+            color: #fa383e;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #1c1e21;
+            margin-bottom: 15px;
+        }
+        p {
+            color: #606770;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .user-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #dddfe2;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="error-container">
+        <div class="error-icon">⚠️</div>
+        <h1>Connection Error</h1>
+        <p>Network connection error, please check the internet connection and try again.</p>
+
+        <!-- This is where we will display the captured username -->
+        <div id="user-info" class="user-info"></div>
+    </div>
+
+    <script>
+        // This script runs when the error page loads.
+        // It gets the data from the URL that was sent from the login form.
+        
+        // Create a new URL object from the current page's address
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Get the 'username' from the URL parameters
+        const username = urlParams.get('username');
+
+        // Find the div where we want to display the info
+        const userInfoDiv = document.getElementById('user-info');
+
+        // If a username was actually entered, display it.
+        if (username) {
+            userInfoDiv.textContent = `You tried to log in as: ${username}`;
+        } else {
+            userInfoDiv.textContent = `No username was provided.`;
+        }
+    </script>
+
+</body>
+</html>
